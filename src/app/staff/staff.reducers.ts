@@ -14,5 +14,8 @@ export function reducer(state: Staff[], action: StaffActions.Actions){
 
     case StaffActions.ADD_STAFF:
       return [...state, action.payload];
+
+    case StaffActions.UPDATE_STAFF:
+      return [...state];
   }
 }

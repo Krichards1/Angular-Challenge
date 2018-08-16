@@ -1,14 +1,14 @@
-<p-dialog header="Staff Edit" [visible]="display" *ngIf="display" modal=true closable=true>
+<p-dialog header="Staff Edit" [visible]="display" *ngIf="display" modal=true (onShow)="initData()">
     <div class="modal-container">
-      <p>Staff Type Code <input type="text" [disabled]=true pInputText placeholder="{{staff.code}}"/></p>
-      <p>Staff Type Description <input type="text" pInputText placeholder="{{staff.description}}" /></p>
-      <p>Staff Role <p-dropdown></p-dropdown> </p>
+      <p>Staff Type Code <input type="text" [disabled]=true pInputText value="{{staff.code}}"/></p>
+      <p>Staff Type Description <input type="text" pInputText [(ngModel)]="desc" value="{{desc}}" /></p>
+      <p>Staff Role <p-dropdown ng-model="role"></p-dropdown> </p>
       <p>Enable After Call Work <p-dropdown [disabled]=true></p-dropdown></p>
       <p>Restrict Call History<p-dropdown [disabled]=true></p-dropdown></p>
     </div>
-    <div class="modal-buttons">
-      <p-button label="Deactivate" [disabled]=true  style="padding-right:10px" ></p-button>
-      <p-button label="Cancel"  style="padding:10px" (onClick)="cancel()" ></p-button>
-      <p-button label="Save"  style="padding:10px" ></p-button>
-    </div>
+    <p-footer>
+      <p-button label="Deactivate" [disabled]=true ></p-button>
+      <p-button label="Cancel"  (onClick)="cancel()" ></p-button>
+      <p-button label="Save"  (onClick)="update($event)" ></p-button>
+    </p-footer>
 </p-dialog>

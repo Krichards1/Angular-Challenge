@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -20,20 +20,37 @@ export class ModalComponent implements OnInit {
   @Input()
   staff: Staff;
 
+  @Input()
+  rowIndex: number;
+
   @Output()
   onClose = new EventEmitter();
 
-  constructor(private store: Store<StaffState>) { }
+//models
+  desc: string;
+  role: string;
+
+  constructor(private store: Store<StaffState> ) {
+  }
 
   ngOnInit() {
   }
 
+
 //EVENT HANDLERS
   //OnEdit
+  update(event){
+    this.store.dispatch(new StaffActions.UpdateStaff());
+    console.log(this.rowIndex);
+    this.onClose.emit();
+  }
 
   //onClose
-  cancel(event){
-    console.log("cancelled");
+  cancel(){
     this.onClose.emit();
+  }
+  initData(){
+    this.desc = this.staff.description;
+    this.role = this.staff.role;
   }
 }

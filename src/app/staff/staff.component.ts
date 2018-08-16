@@ -49,12 +49,12 @@ export class StaffComponent implements OnInit {
 
 //EVENT HANDLING
   onRowSelect(event) {
+    // rowIndex = event.index;
     this.display = true;
   }
 
   onModalClose(){
     this.display = false;
-    console.log('modal closed');
   }
 
   handleClick(event){

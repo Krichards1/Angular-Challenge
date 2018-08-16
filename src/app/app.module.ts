@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { FormsModule } from '@angular/forms';
 
 import {DialogModule} from 'primeng/dialog';
 import {TabViewModule} from 'node_modules/primeng/tabview';
@@ -33,7 +34,8 @@ import { ModalComponent } from './modal/modal.component';
     TableModule,
     InputTextModule,
     DropdownModule,
-    DialogModule
+    DialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
