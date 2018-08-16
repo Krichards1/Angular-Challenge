@@ -17,6 +17,6 @@
   </ng-template>
 </p-table>
 
-<div hidden>
-<app-modal></app-modal>
-</div>
+
+<!-- MODAL -->
+<app-modal [display]="display" [staff]="selectedRow" (onClose)="onModalClose()"></app-modal>

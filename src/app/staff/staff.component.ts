@@ -20,6 +20,7 @@ export class StaffComponent implements OnInit {
   staff: Observable<Staff[]>;
   cols: any[];
   selectedRow: Staff;
+  display: boolean = false;
 
   constructor(private store: Store<StaffState>, private service: GetDataService) {
     this.staff = store.select('staff');
@@ -48,8 +49,13 @@ export class StaffComponent implements OnInit {
 
 //EVENT HANDLING
   onRowSelect(event) {
-      console.log(this.selectedRow.code);
-    }
+    this.display = true;
+  }
+
+  onModalClose(){
+    this.display = false;
+    console.log('modal closed');
+  }
 
   handleClick(event){
     this.store.dispatch(new StaffActions.AddStaff({description: "added staff", code:"AAA", role:"AGENT", active:"Y",last_mod:"Kristin Richards",

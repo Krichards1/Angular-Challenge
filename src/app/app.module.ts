@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
+import {DialogModule} from 'primeng/dialog';
 import {TabViewModule} from 'node_modules/primeng/tabview';
 import {ButtonModule} from 'node_modules/primeng/components/button/button';
 import {TableModule} from 'node_modules/primeng/table';
@@ -23,6 +24,7 @@ import { ModalComponent } from './modal/modal.component';
     ModalComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({staff : reducer}),
@@ -30,7 +32,8 @@ import { ModalComponent } from './modal/modal.component';
     ButtonModule,
     TableModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

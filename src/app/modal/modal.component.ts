@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+
+import { Staff } from '../staff/models/staff.model';
+import { StaffState } from '../staff/staff.state';
+import * as StaffActions from '../staff/actions/staff.actions';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +13,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  constructor() { }
+//IO
+  @Input()
+  display: boolean = false;
+
+  @Input()
+  staff: Staff;
+
+  @Output()
+  onClose = new EventEmitter();
+
+  constructor(private store: Store<StaffState>) { }
 
   ngOnInit() {
   }
 
+//EVENT HANDLERS
+  //OnEdit
+
+  //onClose
+  cancel(event){
+    console.log("cancelled");
+    this.onClose.emit();
+  }
 }
