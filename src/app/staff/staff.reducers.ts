@@ -16,10 +16,13 @@ export function reducer(state: Staff[], action: StaffActions.Actions){
       return action.payload;
 
     case StaffActions.ADD_STAFF:
+      return state;
+
+    case StaffActions.ADD_STAFF_SUCCESS:
       return [...state, action.payload];
 
     case StaffActions.UPDATE_STAFF:
-      console.log('effect in effect');
+      Object.assign(state[action.payload.index], action.payload.updates);
       return state;
   }
 }

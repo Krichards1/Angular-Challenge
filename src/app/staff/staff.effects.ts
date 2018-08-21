@@ -22,6 +22,7 @@ export class StaffEffects {
 
   @Effect()
     addStaff$ = this.actions$.pipe(
-      ofType(StaffActions.ADD_STAFF)
-    )
+      ofType(StaffActions.ADD_STAFF),
+      map(res => new StaffActions.AddStaffSuccess((res as any).payload))
+    );
 }

@@ -15,10 +15,10 @@ import {GetDataService} from './getdata.service';
 
 
 export class StaffComponent implements OnInit {
-
   staff: Observable<Staff[]>;
   cols: any[];
   selectedRow: Staff;
+  selectedRowIndex: number;
   display: boolean = false;
 
   constructor(private store: Store<StaffState>, private service: GetDataService) {
@@ -29,7 +29,6 @@ export class StaffComponent implements OnInit {
 
 //INITIALIZATION
   ngOnInit() {
-
     this.cols = [
       {field: 'description', header: 'Description'},
       {field: 'code', header: 'Code'},
@@ -43,11 +42,15 @@ export class StaffComponent implements OnInit {
 
 //EVENT HANDLING
   onRowSelect(event) {
-    // rowIndex = event.index;
+    this.selectedRowIndex = event.index;
+    // console.log(event);
     this.display = true;
   }
 
-  onModalClose(){
+  onModalClose(event){
+    if(event){
+      this.store.dispatch(new StaffActions.UpdateStaff(event));
+    }
     this.display = false;
   }
 

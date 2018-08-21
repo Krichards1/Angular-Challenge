@@ -1,4 +1,4 @@
-<p-button label="Add" (onClick)="handleClick($event)" style="padding:10px" ></p-button>
+<p-button label="Add" (onClick)="handleClick($event)" style="padding:10px"></p-button>
 
 <p-table [columns]="cols" [value]="staff | async" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="75vh" >
   <ng-template pTemplate="header" let-columns>
@@ -19,4 +19,4 @@
 
 
 <!-- MODAL -->
-<app-modal [display]="display" [staff]="selectedRow" [rowIndex]="rowIndex" (onClose)="onModalClose()"></app-modal>
+<app-modal [display]="display" [staff]="selectedRow" [rowIndex]="selectedRowIndex" (onClose)="onModalClose($event)"></app-modal>

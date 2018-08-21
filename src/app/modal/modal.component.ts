@@ -5,13 +5,21 @@ import { Store } from '@ngrx/store';
 import { Staff, StaffState } from '../staff/staff.state';
 import * as StaffActions from '../staff/staff.actions';
 
+interface Role {
+  name: string;
+}
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit {
 
+export class ModalComponent implements OnInit {
+  sc: Staff;
+  roles: Role[];
+  selectedRole: Role;
+  
 //IO
   @Input()
   display: boolean = false;
@@ -25,28 +33,36 @@ export class ModalComponent implements OnInit {
   @Output()
   onClose = new EventEmitter();
 
-//models
-  desc: string;
-  role: string;
 
   constructor(private store: Store<StaffState> ) {
+    this.roles = [
+            {name: 'AGENT'},
+            {name: 'RN'},
+            {name: 'MD'},
+            {name: 'DA'}
+        ];
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.sc = Object.assign({}, this.staff);
+  }
 
 //EVENT HANDLERS
-  //OnEdit
-  update(event){
-    // this.store.dispatch(new StaffActions.UpdateStaff());
+  //OnSaved
+  update(){
+    this.sc.role = this.selectedRole.name;
+    this.onClose.emit({updates: this.sc, index: this.rowIndex});
+  }
+
+  //onCancelled
+  cancel(){
+    this.selectedRole = {name: this.sc.role};
     this.onClose.emit();
   }
 
-  //onClose
-  cancel(){
-    this.onClose.emit();
+  onShow(){
+    this.sc = Object.assign(this.sc, this.staff);
+    this.selectedRole = {name: this.sc.role};
   }
-  initData(){
-    this.desc = this.staff.description;
-    this.role = this.staff.role;
-  }
+
 }
