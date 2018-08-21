@@ -1,6 +1,6 @@
 <p-button label="Add" (onClick)="handleClick($event)" style="padding:10px"></p-button>
 
-<p-table [columns]="cols" [value]="staff | async" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="75vh" >
+<p-table [columns]="cols" [value]="staff | async" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="65vh" >
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
