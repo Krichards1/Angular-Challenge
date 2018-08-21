@@ -1,13 +1,19 @@
-import { Staff } from './../models/staff.model';
+import { Staff } from './staff.state';
 
 import { Action } from '@ngrx/store';
 
-
+export const GET_STAFF = '[Staff] GET_STAFF';
 export const INIT_STAFF = '[Staff] INIT_STAFF';
 export const ADD_STAFF = '[Staff] ADD_STAFF';
 export const UPDATE_STAFF = '[Staff] UPDATE_STAFF';
 
 // GETDATA FUNCTION
+export class GetStaff implements Action {
+  readonly type = GET_STAFF;
+
+}
+
+//INITIALIZE STAFF FROM GET DATA FUNCTION
 export class InitStaffs implements Action {
     readonly type = INIT_STAFF;
 
@@ -27,7 +33,7 @@ export class UpdateStaff implements Action {
     readonly type = UPDATE_STAFF;
 
 
-    //constructor(public payload: Staff){};
+    constructor(public payload: any){};
 }
 
-export type Actions = InitStaffs | AddStaff | UpdateStaff;
+export type Actions = GetStaff | InitStaffs | AddStaff | UpdateStaff;

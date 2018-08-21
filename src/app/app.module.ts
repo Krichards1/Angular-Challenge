@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { FormsModule } from '@angular/forms';
 
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
 import { StaffComponent } from './staff/staff.component';
 import { reducer } from './staff/staff.reducers';
 import { ModalComponent } from './modal/modal.component';
+import { StaffEffects } from './staff/staff.effects'
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { ModalComponent } from './modal/modal.component';
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({staff : reducer}),
+    EffectsModule.forRoot([StaffEffects]),
     TabViewModule,
     ButtonModule,
     TableModule,

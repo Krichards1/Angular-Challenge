@@ -2,9 +2,8 @@ import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { Staff } from '../staff/models/staff.model';
-import { StaffState } from '../staff/staff.state';
-import * as StaffActions from '../staff/actions/staff.actions';
+import { Staff, StaffState } from '../staff/staff.state';
+import * as StaffActions from '../staff/staff.actions';
 
 @Component({
   selector: 'app-modal',
@@ -33,15 +32,12 @@ export class ModalComponent implements OnInit {
   constructor(private store: Store<StaffState> ) {
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit(){}
 
 //EVENT HANDLERS
   //OnEdit
   update(event){
-    this.store.dispatch(new StaffActions.UpdateStaff());
-    console.log(this.rowIndex);
+    // this.store.dispatch(new StaffActions.UpdateStaff());
     this.onClose.emit();
   }
 

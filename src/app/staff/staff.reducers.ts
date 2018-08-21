@@ -1,5 +1,5 @@
-import { Staff } from './models/staff.model';
-import * as StaffActions from './actions/staff.actions';
+import { Staff } from './staff.state';
+import * as StaffActions from './staff.actions';
 import { Action } from '@ngrx/store';
 
 //initial list of staff will pull from JSON
@@ -9,6 +9,9 @@ export function reducer(state: Staff[], action: StaffActions.Actions){
 
   switch(action.type){
 
+    case StaffActions.GET_STAFF:
+      return state;
+
     case StaffActions.INIT_STAFF:
       return action.payload;
 
@@ -16,6 +19,7 @@ export function reducer(state: Staff[], action: StaffActions.Actions){
       return [...state, action.payload];
 
     case StaffActions.UPDATE_STAFF:
-      return [...state];
+      console.log('effect in effect');
+      return state;
   }
 }

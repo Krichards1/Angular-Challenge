@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { Staff } from './models/staff.model';
-import { StaffState } from './staff.state';
-import * as StaffActions from './actions/staff.actions';
+import { Staff, StaffState } from './staff.state';
+import * as StaffActions from './staff.actions';
 import {GetDataService} from './getdata.service';
 
 @Component({
@@ -23,18 +22,13 @@ export class StaffComponent implements OnInit {
   display: boolean = false;
 
   constructor(private store: Store<StaffState>, private service: GetDataService) {
+    this.store.dispatch(new StaffActions.GetStaff());
     this.staff = store.select('staff');
    }
 
 
 //INITIALIZATION
   ngOnInit() {
-    //Initialize Staff List
-    this.service.getData().subscribe((res: Staff[]) => {
-
-      this.store.dispatch(new StaffActions.InitStaffs(res));
-
-    });
 
     this.cols = [
       {field: 'description', header: 'Description'},
