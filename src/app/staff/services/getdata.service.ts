@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Staff } from './staff.state';
+import { Staff } from '../models/staff.state';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class GetDataService {
 
   constructor(private http: HttpClient) {

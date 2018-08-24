@@ -1,10 +1,10 @@
-import { Staff } from './staff.state';
-import * as StaffActions from './staff.actions';
 import { Action } from '@ngrx/store';
 
-//initial list of staff will pull from JSON
+import { Staff } from '../models/staff.state';
+import * as StaffActions from '../actions/staff.actions';
 
-export function reducer(state: Staff[], action: StaffActions.Actions){
+
+export function reducers(state: Staff[], action: StaffActions.StaffActions){
 
   switch(action.type){
 

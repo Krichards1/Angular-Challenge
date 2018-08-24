@@ -2,18 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { Staff, StaffState } from './staff.state';
-import * as StaffActions from './staff.actions';
-import {GetDataService} from './getdata.service';
+import { Staff, StaffState } from './models/staff.state';
+import * as StaffActions from './actions/staff.actions';
 
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
-  styleUrls: ['./staff.component.css'],
-  providers: [GetDataService]
+  styleUrls: ['./staff.component.css']
 })
-
-
 export class StaffComponent implements OnInit {
   staff: Observable<Staff[]>;
   cols: any[];
@@ -21,13 +17,11 @@ export class StaffComponent implements OnInit {
   selectedRowIndex: number;
   display: boolean = false;
 
-  constructor(private store: Store<StaffState>, private service: GetDataService) {
+  constructor(private store: Store<StaffState>) {
     this.store.dispatch(new StaffActions.GetStaff());
     this.staff = store.select('staff');
-   }
+  }
 
-
-//INITIALIZATION
   ngOnInit() {
     this.cols = [
       {field: 'description', header: 'Description'},
@@ -39,13 +33,10 @@ export class StaffComponent implements OnInit {
     ]
   }
 
-
-//EVENT HANDLING
   onRowSelect(event) {
-    this.selectedRowIndex = event.index;
-    // console.log(event);
-    this.display = true;
-  }
+  this.selectedRowIndex = event.index;
+  this.display = true;
+}
 
   onModalClose(event){
     if(event){

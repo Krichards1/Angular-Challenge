@@ -1,4 +1,4 @@
-// Staff State and model
+// Staff State and Model
 export interface Staff {
   description: string;
   code: string;

@@ -1,9 +1,8 @@
-import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { Staff, StaffState } from '../staff/staff.state';
-import * as StaffActions from '../staff/staff.actions';
+import { Staff } from '../staff/models/staff.state';
 
 interface Role {
   name: string;
@@ -19,7 +18,7 @@ export class ModalComponent implements OnInit {
   sc: Staff;
   roles: Role[];
   selectedRole: Role;
-  
+
 //IO
   @Input()
   display: boolean = false;
@@ -34,7 +33,7 @@ export class ModalComponent implements OnInit {
   onClose = new EventEmitter();
 
 
-  constructor(private store: Store<StaffState> ) {
+  constructor() {
     this.roles = [
             {name: 'AGENT'},
             {name: 'RN'},
