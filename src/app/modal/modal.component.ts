@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 

@@ -24,4 +24,8 @@ describe('ModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should hold correct row index number', () => {
+    expect()
+  })
 });
