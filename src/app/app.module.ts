@@ -40,7 +40,7 @@ import { reducers } from './staff/reducers/index';
     FormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
